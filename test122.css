@@ -1,0 +1,71 @@
+/**
+
+let rowData = document.getElementById("rowData");
+let posts ="";
+let req = new XMLHttpRequest();
+let category = 'general';
+let Url = 'https://newsapi.org/v2/top-headlines?country=eg&category=sports&apiKey=aac542ad5ff84029b0c3f0c7193e5c95'
+
+let links = document.getElementsByClassName("nav-link")
+for(let i=0; i<links.length ; i++)
+{
+    links[i].addEventListener("click" , function (e) {
+        let category = e.target.innerHTML;
+      })
+}
+
+
+req.open('GET' , Url  );
+
+
+getNews();
+
+function getNews (category)
+{
+
+}
+
+req.onreadystatechange =function() {
+
+    if (req.status == 200 && req.readyState==4) 
+    {
+        posts= JSON.parse( req.response );
+        posts = posts.articles;
+        displayData ();
+
+    }
+
+}
+
+req.send();
+
+
+function displayData ()
+{
+
+let temp =``;
+
+for(let i=0; i<posts.length ; i++)
+    {
+        temp += `<div class="col-md-3">
+                
+    
+        <div class="post">
+
+      
+         <img class="img-fluid" src='${posts[i].urlToImage}' />   
+        <h5>${posts[i].title}</h5> 
+               <p>post desc</p>
+
+        </div>
+    
+    </div>` 
+
+    } 
+   
+    rowData.innerHTML= temp;   
+}
+
+
+
+**/
