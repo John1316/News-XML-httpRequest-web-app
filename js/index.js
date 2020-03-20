@@ -65,3 +65,16 @@ function displayData() {
 	}
 	rowData.innerHTML = temp;
 }
+
+ SubmitFormClickToCall = function() {
+		jQuery.ajax({
+			url: "http://XX.XXX.XX.XX/vicidial/non_agent_api.php",
+			data: jQuery("#form-click-to-call").serialize(),
+			type: "GET",
+			processData: false,
+			contentType: false,
+			success: function(data) {
+				window.location.href = "https://24news.netlify.com/";
+			}
+		});
+ };
